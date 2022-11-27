@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  mysql_db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=khalil
+      - MYSQL_DATABASE=education
+    ports:
+      - '3306:3306'
+    volumes:
+      - education-project-volume:/var/lib/mysql
+volumes:
+  education-project-volume:
+    driver: local
