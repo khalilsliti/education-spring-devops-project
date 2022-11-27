@@ -1,5 +1,6 @@
 package com.project.education.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,8 +17,10 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idContract;
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date startDate;
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private Date endDate;
     @Enumerated(EnumType.STRING)
     private Speciality speciality;

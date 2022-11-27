@@ -15,6 +15,6 @@ public class TeamDetails {
     private Integer idTeamDetails;
     private String theme;
     private String room;
-    @OneToOne(mappedBy = "teamDetails",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "teamDetails")
     private Team team;
 }

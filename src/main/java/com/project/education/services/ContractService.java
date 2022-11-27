@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -37,8 +38,8 @@ public class ContractService implements IContractService {
     }
 
     @Override
-    public void getContractById(Integer id) {
-        this.contractRepository.findById(id);
+    public Optional<Contract> getContractById(Integer id) {
+        return this.contractRepository.findById(id);
 
     }
 }
