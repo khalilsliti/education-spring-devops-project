@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DepartmentService implements IDepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
+
     @Override
     public List<Department> getAll() {
         return this.departmentRepository.findAll();
@@ -28,12 +31,12 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void deleteDepartment(Integer id) {
-    this.departmentRepository.deleteById(id);
+        this.departmentRepository.deleteById(id);
     }
 
     @Override
-    public void getDepartmentById(Integer id) {
-        this.departmentRepository.findById(id);
+    public Optional<Department> getDepartmentById(Integer id) {
+        return this.departmentRepository.findById(id);
 
     }
 }

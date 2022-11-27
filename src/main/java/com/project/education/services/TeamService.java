@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeamService implements ITeamService {
@@ -33,7 +34,7 @@ public class TeamService implements ITeamService {
     }
 
     @Override
-    public void getTeamById(Integer id) {
-
+    public Optional<Team> getTeamById(Integer id) {
+        return this.teamRepository.findById(id);
     }
 }

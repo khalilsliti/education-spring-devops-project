@@ -4,6 +4,7 @@ package com.project.education.services;
 import com.project.education.entities.Department;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IDepartmentService {
     List<Department> getAll();
@@ -14,5 +15,5 @@ public interface IDepartmentService {
 
     void deleteDepartment(Integer id);
 
-    void getDepartmentById(Integer id);
+    Optional<Department> getDepartmentById(Integer id);
 }
