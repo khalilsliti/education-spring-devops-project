@@ -3,9 +3,7 @@ package com.project.education.controllers;
 import com.project.education.entities.Student;
 import com.project.education.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,8 +19,22 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional <Student> getStudentById(Integer id) {
+    public Optional <Student> getStudentById(@PathVariable(value = "id") Integer id) {
         return this.studentService.getStudentById(id);
+    }
+    @PostMapping
+    public void addStudent(@RequestBody Student student) {
+        this.studentService.addStudent(student);
+    }
+
+    @PutMapping
+    public void updateStudent(@RequestBody Student student)
+    {
+        this.studentService.updateStudent(student);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable(value="id") Integer id){
+        this.studentService.deleteStudent(id);
     }
 
 }
