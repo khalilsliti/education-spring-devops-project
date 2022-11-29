@@ -15,6 +15,7 @@ public class TeamDetails {
     private Integer idTeamDetails;
     private String theme;
     private String room;
-    @OneToOne(mappedBy = "teamDetails")
+    @OneToOne
+    @JoinColumn(referencedColumnName = "teamId")
     private Team team;
 }

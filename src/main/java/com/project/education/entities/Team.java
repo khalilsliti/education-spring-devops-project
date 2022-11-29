@@ -20,6 +20,6 @@ public class Team {
     private Level level;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Student> students;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "team",cascade=CascadeType.ALL)
     private TeamDetails teamDetails;
 }

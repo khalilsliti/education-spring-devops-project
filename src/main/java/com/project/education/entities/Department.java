@@ -16,6 +16,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDepartment;
     private String departmentName;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "department")
+    @OneToMany
     private Set<Student> students;
+
 }

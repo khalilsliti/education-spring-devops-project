@@ -14,14 +14,14 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idStudent;
     private String lastName;
-    private String firtName;
+    private String firstName;
     @Enumerated(EnumType.STRING)
     private Field field;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "student")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<Contract> contracts;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Department department;
-    @ManyToMany(mappedBy = "students",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "students")
     private Set<Team> teams;
 
 

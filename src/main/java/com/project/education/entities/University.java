@@ -17,6 +17,7 @@ public class University {
     private Integer idUniversity;
     private String universityName;
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "idUniversity")
     private Set<Department> departments;
 
 }

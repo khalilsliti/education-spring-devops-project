@@ -26,7 +26,8 @@ public class Contract {
     private Speciality speciality;
     private Boolean archive;
     private Integer contractAmount;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(referencedColumnName ="idStudent" )
     private Student student;
 
 }
