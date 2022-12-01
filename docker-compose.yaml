@@ -10,10 +10,10 @@ services:
       - '8080:8080'
     environment:    #TO-DO: Get env variables from the host machine
       - DATABASE_HOST=mysql_db
-      - DATABASE_USER=root
-      - DATABASE_PASSWORD=khalil
-      - DATABASE_NAME=education
-      - DATABASE_PORT=3306
+      - DATABASE_USER=${MYSQLDB_USER}
+      - DATABASE_PASSWORD=${MYSQLDB_ROOT_PASSWORD}
+      - DATABASE_NAME=${MYSQLDB_DATABASE}
+      - DATABASE_PORT=${MYSQLDB_LOCAL_PORT}
 
   mysql_db:
     image: mysql
