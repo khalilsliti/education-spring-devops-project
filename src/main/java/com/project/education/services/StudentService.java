@@ -1,6 +1,8 @@
 package com.project.education.services;
-
+import com.project.education.entities.Department;
 import com.project.education.entities.Student;
+import com.project.education.exceptions.ResourceNotFoundException;
+import com.project.education.repositories.DepartmentRepository;
 import com.project.education.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ import java.util.Optional;
 @Service
 public class StudentService implements IStudentService {
     @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
     private StudentRepository studentRepository;
 
     @Override
@@ -19,8 +23,12 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void addStudent(Student student) {
-        this.studentRepository.save(student);
+    public Student addStudent(Student student, Integer idDepartment) throws ResourceNotFoundException {
+        Department department = this.departmentRepository.findById(idDepartment).orElseThrow(()-> new ResourceNotFoundException());
+
+            student.setDepartment(department);
+
+        return this.studentRepository.save(student);
     }
 
     @Override

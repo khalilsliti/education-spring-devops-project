@@ -1,6 +1,7 @@
 package com.project.education.controllers;
 
 import com.project.education.entities.Student;
+import com.project.education.exceptions.ResourceNotFoundException;
 import com.project.education.services.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,8 @@ public class StudentController {
         return this.studentService.getStudentById(id);
     }
     @PostMapping
-    public void addStudent(@RequestBody Student student) {
-        this.studentService.addStudent(student);
+    public Student addStudent(@RequestBody Student student ) throws ResourceNotFoundException {
+        return this.studentService.addStudent(student,student.getDepartment().getIdDepartment());
     }
 
     @PutMapping

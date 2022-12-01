@@ -36,5 +36,6 @@ public class TeamService implements ITeamService {
     @Override
     public Optional<Team> getTeamById(Integer id) {
         return this.teamRepository.findById(id);
+        
     }
 }

@@ -17,9 +17,8 @@ public class Student {
     private String firstName;
     @Enumerated(EnumType.STRING)
     private Field field;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private Set<Contract> contracts;
     @ManyToOne
+    @JoinColumn(referencedColumnName = "idDepartment")
     private Department department;
     @ManyToMany(mappedBy = "students")
     private Set<Team> teams;
