@@ -23,10 +23,10 @@ def sonarTest() {
     }
 }
 
-def cleanUntaggedImages(String serverIp, String serverUser) {
+def cleanUntaggedImages() {
     def cleanImages = 'docker image prune --force --filter "dangling=true"'
     sshagent(credentials: ['jenkins-server']) {
-        sh "ssh -o StrictHostKeyChecking=no ${serverUser}@${serverIp} ${cleanImages}"
+        sh "${cleanImages}"
     }
 }
 

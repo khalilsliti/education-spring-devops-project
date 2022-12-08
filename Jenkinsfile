@@ -51,7 +51,7 @@ pipeline {
         success {
             script {
                 echo 'removing the old images from the Jenkins server..'
-                gv.cleanUntaggedImages("${JENKINS_SERVER_IP}","${JENKINS_SERVER_USER}")
+                gv.cleanUntaggedImages()
 
 
             }
@@ -59,7 +59,7 @@ pipeline {
         failure {
             script {
                 echo 'removing the old images from the Jenkins server..'
-                gv.cleanUntaggedImages("${JENKINS_SERVER_IP}","${JENKINS_SERVER_USER}")
+                gv.cleanUntaggedImages()
 
 
             }
