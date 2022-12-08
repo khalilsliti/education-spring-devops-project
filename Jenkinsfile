@@ -26,6 +26,7 @@ stage('Scan') {
       steps {
         script {
           gv.sonarTest()
+
         }
       }
 

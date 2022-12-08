@@ -21,6 +21,7 @@ def deployApp(String serverIp, String serverUser) {
 def sonarTest() {
 
             withSonarQubeEnv(installationName: 'sq') {
+
                 sh './mvnw clean sonar:sonar'
             }
 }
