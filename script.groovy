@@ -19,7 +19,7 @@ def deployApp(String serverIp, String serverUser) {
 def sonarTest() {
     echo 'Sonar Testing'
     withSonarQubeEnv(installationName: 'sq') {
-        sh 'sudo ./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+        sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
     }
 }
 
