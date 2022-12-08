@@ -1,4 +1,3 @@
-
 def buildImage() {
     echo "building the docker image..."
     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
@@ -9,20 +8,24 @@ def buildImage() {
 }
 
 
-
 def deployApp(String serverIp, String serverUser) {
     echo 'deploying the application...'
     def composeRun = '"export MYSQLDB_USER=root MYSQLDB_ROOT_PASSWORD=khalil MYSQLDB_DATABASE=education MYSQLDB_LOCAL_PORT=3306 MYSQLDB_DOCKER_PORT=3306 SPRING_LOCAL_PORT=8080 SPRING_DOCKER_PORT=8080 && docker-compose up -d"'
-    sshagent (credentials: ['deployment-server']) {
+    sshagent(credentials: ['deployment-server']) {
         sh "ssh -o StrictHostKeyChecking=no ${serverUser}@${serverIp} ${composeRun}"
     }
 }
 
+def sonarTest() {
+    echo 'Sonar Testing'
+    withSonarQubeEnv(installationName: 'sq') {
+        sh 'sudo ./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+    }
+}
 
-
-def cleanUntaggedImages(String serverIp, String serverUser){
+def cleanUntaggedImages(String serverIp, String serverUser) {
     def cleanImages = 'docker image prune --force --filter "dangling=true"'
-    sshagent (credentials: ['jenkins-server']) {
+    sshagent(credentials: ['jenkins-server']) {
         sh "ssh -o StrictHostKeyChecking=no ${serverUser}@${serverIp} ${cleanImages}"
     }
 }
