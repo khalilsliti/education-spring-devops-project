@@ -18,13 +18,7 @@ def deployApp(String serverIp, String serverUser) {
     }
 }
 
-def sonarTest() {
 
-            withSonarQubeEnv(installationName: 'sq') {
-
-                sh './mvnw clean sonar:sonar'
-            }
-}
 
 def cleanUntaggedImages(String serverIp, String serverUser){
     def cleanImages = 'docker image prune --force --filter "dangling=true"'

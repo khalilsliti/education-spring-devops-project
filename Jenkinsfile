@@ -22,13 +22,7 @@ pipeline {
             }
         }
 
-stage('Scan') {
-      steps {
-        script {
-          gv.sonarTest()
 
-        }
-      }
 
         stage("build image") {
             steps {
