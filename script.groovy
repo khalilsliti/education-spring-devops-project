@@ -19,7 +19,7 @@ def deployApp(String serverIp, String serverUser) {
 def sonarTest() {
     echo 'Sonar Testing'
     withSonarQubeEnv(installationName: 'sq') {
-        sh './mvnw clean package sonar:sonar'
+        sh 'mvn clean package sonar:sonar'
     }
 }
 
