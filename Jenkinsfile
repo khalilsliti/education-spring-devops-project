@@ -22,14 +22,14 @@ pipeline {
                 }
             }
         }
-  /*stage("testing with sonar") {
+  stage("testing with sonar") {
             steps {
                 script {
                     gv.sonarTest()
                 }
             }
         }
-*/
+
 
         stage("build image") {
             steps {
@@ -60,7 +60,6 @@ pipeline {
         failure {
             script {
                 echo 'removing the old images from the Jenkins server..'
-
                 gv.cleanUntaggedImages()
             }
         }
