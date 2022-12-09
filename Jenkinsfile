@@ -60,6 +60,7 @@ pipeline {
         failure {
             script {
                 echo 'removing the old images from the Jenkins server..'
+
                 gv.cleanUntaggedImages()
             }
         }
