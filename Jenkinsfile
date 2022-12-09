@@ -12,6 +12,7 @@ pipeline {
     }
     tools {
         maven 'maven'
+
     }
     stages {
         stage("init") {
