@@ -19,6 +19,7 @@ def deployApp(String serverIp, String serverUser) {
 def sonarTest() {
     echo 'Sonar Testing'
     withSonarQubeEnv(installationName: 'sq') {
+
         sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
     }
 }
