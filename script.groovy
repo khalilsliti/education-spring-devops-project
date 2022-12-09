@@ -27,7 +27,6 @@ def sonarTest() {
 def cleanUntaggedImages() {
     def cleanImages = 'docker image prune --force --filter "dangling=true"'
     sshagent(credentials: ['jenkins-server']) {
-
         sh "${cleanImages}"
     }
 }
